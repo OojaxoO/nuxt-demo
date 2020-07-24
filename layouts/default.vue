@@ -27,11 +27,18 @@
                                 Item 3
                             </NuxtLink>
                         </MenuItem>
-                        <MenuItem name="4">
-                            <Icon type="ios-paper"></Icon>
-                            <NuxtLink to="/login">
-                                Item 4
-                            </NuxtLink>
+                        <MenuItem v-if="$auth.loggedIn" name="4">
+                            <Dropdown>
+                                <Avatar style="background-color: #87d068" icon="ios-person" />
+                                <DropdownMenu slot="list">
+                                    <DropdownItem divided>
+                                        <h5>{{ $auth.user.username }}</h5>
+                                    </DropdownItem>
+                                    <DropdownItem divided>
+                                        <a @click.prevent="logout">退出登录</a>
+                                    </DropdownItem>
+                                </DropdownMenu>
+                            </Dropdown>
                         </MenuItem>
                     </div>
                 </Menu>
@@ -46,7 +53,11 @@
 
 <script>
     export default {
-        
+        methods: {
+            logout () {
+                this.$auth.logout()
+            }
+        }    
     }
 </script>
 
