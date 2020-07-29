@@ -21,11 +21,6 @@
 <script>
 
 export default {
-    // asyncData ({ $axios }) {
-    //     return $axios.$get(`/blog/blog/`).then(data=>{
-    //         return { data }
-    //     })
-    // }
     computed: {
         user: function () {
             return this.$auth.user

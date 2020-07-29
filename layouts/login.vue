@@ -3,7 +3,7 @@
         <div class="login">
             <Row class="loginHeader">
                 <Col span="4" align="right">
-                    <img style="background-color: #24a4ff;max-width: 100%; height: 4vh" src="~/assets/logo.jpg"/>
+                    <img style="max-width: 100%; height: 5vh; vertical-align: middle;" src="~/assets/logo.png"/>
                 </Col>
                 <Col span="20">
                     <div>运维管理拼平台</div>
@@ -17,7 +17,7 @@
                         </Input>
                     </FormItem>
                     <FormItem prop="password">
-                        <Input type="password" v-model="formInline.password" placeholder="Password">
+                        <Input type="password" password v-model="formInline.password" placeholder="Password">
                             <Icon type="ios-lock-outline" slot="prepend"></Icon>
                         </Input>
                     </FormItem>
@@ -60,9 +60,9 @@ export default {
                   form.append('grant_type', 'password')
                   form.append('username', username)
                   form.append('password', password)
-                  return this.$auth.loginWith('local',{data: form})
+                  this.$auth.loginWith('local',{data: form})
               } else {
-                  //this.$Message.error('Fail!');
+                this.$Message.error('校验失败!');
               }
           })
       }
@@ -73,8 +73,8 @@ export default {
 <style scoped>
     .content {
         background-color: #24a4ff;
-        width: 100%;
-        height: 100%;
+        width: 100vw;
+        height: 100vh;
         margin: 0;
         padding: 0;
     }
